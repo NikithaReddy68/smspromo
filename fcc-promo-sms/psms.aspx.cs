@@ -37,6 +37,7 @@ namespace fcc_promo_sms
                     Response.Redirect("Index.aspx");
                 }
                 int result = objBAL.SaveUserActionLogs(loginID, "psms.aspx", "PageLoad", "HomePage");
+
                 Log.Write("User " + Session["Login_LoginName"] + " entered into Home page");
 
             }
