@@ -794,6 +794,62 @@ namespace HelpDeskCore
             }
             return ds;
         }
+        public int updatesubscriber()
+        {
+            int result;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                
+                result = SqlHelper.ExecuteNonQuery("MI_GetUPDATED_SUBSCRIBE_USERS",  connectionString);
+            }
+            return result;
+        }
+        public DataSet Getdeletedsubscriber(string msisdn)
+        {
+            DataSet ds = new DataSet();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@msisdn", SqlDbType.VarChar,15);
+                sqlParam[0].Value = msisdn;
+                ds = SqlHelper.ExecuteDataSet("MI_GetFCC_DELETESUBSCRIBERSDETAILS", ref sqlParam, connectionString);
+            }
+            return ds;
+        }
+
+        public int GetSMSPromoconfiguration(string colorbatch, string language, string shortcode, string messageText, string publishtime)
+        {
+            int result = -1;
+            try {
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                connection.Open();
+
+                SqlParameter[] sqlParam = new SqlParameter[5];
+                sqlParam[0] = new SqlParameter("@ColorBatch", SqlDbType.VarChar, 10);
+                sqlParam[0].Value = colorbatch;
+                sqlParam[1] = new SqlParameter("@Lang", SqlDbType.VarChar, 10);
+                sqlParam[1].Value = language;
+                sqlParam[2] = new SqlParameter("@Shortcode", SqlDbType.VarChar, 20);
+                sqlParam[2].Value = shortcode;
+                sqlParam[3] = new SqlParameter("@MessageText", SqlDbType.NVarChar);
+                sqlParam[3].Value = messageText;
+                sqlParam[4] = new SqlParameter("@publishtime", SqlDbType.DateTime);
+                sqlParam[4].Value = Convert.ToDateTime(publishtime);
+
+                 result=SqlHelper.ExecuteNonQuery("MI_FCC_updated_SMSPromo_Congiguration", ref sqlParam, connectionString);
+
+            }
+            catch(Exception ex)
+            {
+                result = -1;
+
+            }
+
+            return result;
+        }
         public DataSet GetChargeLogs(int telcoid, int CPID, string serviceID, string fromDate, string ToDate)
         {
 
@@ -1363,6 +1419,7 @@ namespace HelpDeskCore
                 return serviceTypes.Tables[0];
             }
         }
+
         public DataTable GetServiceDetailsByServiceType(string TelcoId, string shortcode, string ServiceType)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

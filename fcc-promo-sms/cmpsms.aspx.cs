@@ -39,11 +39,11 @@ namespace fcc_promo_sms
                 {
                     Response.Redirect("Index.aspx");
                 }
-                int result = objBAL.SaveUserActionLogs(loginID, "psms.aspx", "PageLoad", "HomePage");
+                int result = objBAL.SaveUserActionLogs(loginID, "cmpsms.aspx", "PageLoad", "HomePage");
                 Log.Write("User " + Session["Login_LoginName"] + " entered into Home page");
-
+                LoadShortcodes();
             }
-            LoadShortcodes();
+            
         }
         protected void lnkBtnClear_Click(object sender, EventArgs e)
         {
@@ -78,52 +78,79 @@ namespace fcc_promo_sms
             string msisdns = string.Empty;
             divError.Visible = false;
             //if (Session["UploadedFile"] != null)
-            //    fileUpload = (FileUpload)Session["UploadedFile"];
+            //    fileUpload = (FileUpload)Session["UploadedFile"];           
 
             try
             {
                 if (!validate())
                     return;
-                if (fileUpload.HasFile)
-                {
-                    string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
-                    string Extension = Path.GetExtension(fileUpload.PostedFile.FileName);
-                    string FolderPath = ConfigurationManager.AppSettings["FolderPath"];
-                    if (Extension != ".txt")
-                    {
-                        errorMessage.Text = "The uploaded file format is invalid, Please upload .txt file only.";
-                        return;
-                    }
-                    string promoID = "Pro_" + System.DateTime.Now.Ticks.ToString();
-                    string FilePath = FolderPath + "\\" + promoID+".txt";
-                    fileUpload.SaveAs(FilePath);
+
+                //if (fileUpload.HasFile)
+                //{
+                //    string FileName = Path.GetFileName(fileUpload.PostedFile.FileName);
+                //    string Extension = Path.GetExtension(fileUpload.PostedFile.FileName);
+                //    string FolderPath = ConfigurationManager.AppSettings["FolderPath"];
+                //    if (Extension != ".txt")
+                //    {
+                //        errorMessage.Text = "The uploaded file format is invalid, Please upload .txt file only.";
+                //        return;
+                //    }
+                //    string promoID = "Pro_" + System.DateTime.Now.Ticks.ToString();
+                //    string FilePath = FolderPath + "\\" + promoID+".txt";
+                //    fileUpload.SaveAs(FilePath);
+
+                string colorbatch =rblcolorbatch.SelectedItem.Text;
+
+                    string language = rbllanguage.SelectedItem.Text;
+
+                
+                string shortcode = ddlShortCode.SelectedItem.Value;
+                string message = txtMessage.Text;
+                string publishtime =DateTime.Parse(Request.Form[txtPublishTime.UniqueID]).ToString();
 
                     DataTable dtMsg = new DataTable();
-                    dtMsg.Columns.AddRange(new DataColumn[4] { 
+                    dtMsg.Columns.AddRange(new DataColumn[5] { 
                             new DataColumn("Shortcode", typeof(string)),
-                            new DataColumn("PromoID", typeof(string)),
+                            //new DataColumn("PromoID", typeof(string)),
                             new DataColumn("PublishTime", typeof(DateTime)),
+                            new DataColumn("ColorBatch",typeof(string)),
+                            new DataColumn("Language",typeof(string)),
                             new DataColumn("message",typeof(string)) });
                     DataRow drM = dtMsg.NewRow();
 
-                    drM["Shortcode"] = ddlShortCode.SelectedValue;
-                    drM["PromoID"] = promoID;
+                    drM["Shortcode"] = ddlShortCode.SelectedItem.Value;
+                    //drM["PromoID"] = promoID;
                     drM["PublishTime"] = DateTime.Parse(Request.Form[txtPublishTime.UniqueID]);
+                    drM["ColorBatch"] = colorbatch;
+                    drM["Language"] = language;
                     drM["message"] = txtMessage.Text;
                     dtMsg.Rows.Add(drM);
 
                     BAL obj = new BAL(helpDeskDBConnStr);
-                    obj.InsertBulkRecordsWithDataTable(dtMsg);
-
+                int res=obj.GetSMSPromoconfiguration(colorbatch, language, shortcode, message, publishtime);
+                   
 
                     
                     ClearControls();
+                if(res!=-1)
+                {
                     errorMessage.ForeColor = Color.Green;
                     errorMessage.Text = "File Uploaded successfully";
                     divError.Visible = true;
                     errorMessage.Visible = true;
-                    
                 }
+                  else
+                {
+                    errorMessage.ForeColor = Color.Green;
+                    errorMessage.Text = "File not Uploaded";
+                    divError.Visible = true;
+                    errorMessage.Visible = true;
+                
+            }
+
+                    
+
+                
                 
              
             }
@@ -150,11 +177,11 @@ namespace fcc_promo_sms
                     errorMessage.Text = "Please enter Message"; divError.Visible = true; errorMessage.Visible = true;
                     return false;
                 }
-                if (!fileUpload.HasFile)
-                {
-                    errorMessage.Text = "Please upload MSISDN file"; divError.Visible = true; errorMessage.Visible = true;
-                    return false;
-                }
+                //if (!fileUpload.HasFile)
+                //{
+                //    errorMessage.Text = "Please upload MSISDN file"; divError.Visible = true; errorMessage.Visible = true;
+                //    return false;
+                //}
                 if (string.IsNullOrEmpty(txtPublishTime.ClientID))
                 {
                     errorMessage.Text = "Please enter Publish Time."; divError.Visible = true; errorMessage.Visible = true;
@@ -177,7 +204,7 @@ namespace fcc_promo_sms
             ddlShortCode.SelectedIndex = 0;
             txtPublishTime.Text = "";
             txtMessage.Text = "";
-            fileUpload.Attributes.Clear();
+            //fileUpload.Attributes.Clear();
         }
         public string Decrypt(string strDecrypt)
         {
@@ -215,6 +242,8 @@ namespace fcc_promo_sms
             Session["Login_LoginName"] = null;
             Response.Redirect("Index.aspx");
         }
+
+       
 
 
         //protected void fileUpload_Load(object sender, EventArgs e)
@@ -254,7 +283,7 @@ namespace fcc_promo_sms
 
         //    }
         //}
- 
+
         //private void Import_To_Grid(string FilePath, string Extension, string FileName)
         //{
         //    string conStr = "";
@@ -413,6 +442,6 @@ namespace fcc_promo_sms
         //                }
         //            }
         //        }
-     
+
     }
 }

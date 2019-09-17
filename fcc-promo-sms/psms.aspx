@@ -3,20 +3,20 @@
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="To send SMS ">
-    <meta name="author" content="Mobility International">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="To send SMS "/>
+    <meta name="author" content="Mobility International"/>
     <title>FCC | Promotional SMS</title>
     <!-- Favicon -->
-    <link href="mi.ico" rel="icon" type="image/png">
+    <link href="mi.ico" rel="icon" type="image/png"/>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Icons -->
-    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet"/>
+    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"/>
     <!-- Argon CSS -->
-    <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
+    <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet"/>
     <style type="text/css">
         .modal {
             position: fixed;
@@ -108,6 +108,12 @@
                                     <span class="nav-link-inner--text">Internal Reports
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-icon" href="delsubscriber.aspx">
+                                    <i class="fa fa-paper-plane"></i>
+                                    <span class="nav-link-inner--text">Delete Subscribers
+                                </a>
+                                 </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="cmpsms.aspx">
                                     <i class="fa fa-paper-plane"></i>

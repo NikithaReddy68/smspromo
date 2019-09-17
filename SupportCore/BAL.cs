@@ -153,6 +153,23 @@ namespace HelpDeskCore
             DAL objDB = new DAL(connectionString);
             return objDB.GetSummary(fromDate, ToDate, rptType);
         }
+        public int updatesubscriber()
+        {
+            DAL objDB = new DAL(connectionString);
+            return objDB.updatesubscriber();
+        }
+        public DataSet Getdeletedsubscriber(string msisdn)
+        {
+            DAL objDB = new DAL(connectionString);
+            return objDB.Getdeletedsubscriber(msisdn);
+        }
+
+        public int GetSMSPromoconfiguration(string colorbatch, string language, string shortcode, string messageText, string publishtime)
+        {
+            DAL objDB = new DAL(connectionString);
+            return objDB.GetSMSPromoconfiguration(colorbatch,language,shortcode,messageText,publishtime);
+        }
+
         public DataSet GetChargeLogs(int telcoid, int CPID, string serviceID, string fromDate, string ToDate)
         {
             DAL objDB = new DAL(connectionString);

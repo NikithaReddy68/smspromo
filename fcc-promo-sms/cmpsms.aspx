@@ -3,21 +3,34 @@
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="To send SMS ">
-    <meta name="author" content="Mobility International">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="To send SMS "/>
+    <meta name="author" content="Mobility International"/>
     <title>FCC | Promotional SMS</title>
     <!-- Favicon -->
-    <link href="mi.ico" rel="icon" type="image/png">
+    <link href="mi.ico" rel="icon" type="image/png"/>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Icons -->
-    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet"/>
+    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"/>
     <!-- Argon CSS -->
-    <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet">
+    <link type="text/css" href="assets/css/argon.css?v=1.0.0" rel="stylesheet"/>
     <link href="Styles/calendar-blue.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .auto-style1 {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            max-width: 33.33333%;
+            flex: 0 0 33.33333%;
+            left: 15px;
+            top: -375px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    </style>
 </head>
 
 
@@ -67,6 +80,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link nav-link-icon" href="delsubscriber.aspx">
+                                    <i class="fa fa-paper-plane"></i>
+                                    <span class="nav-link-inner--text">Delete Subscribers
+                                </a>
+                                 </li>
+                            <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="psms.aspx">
                                     <i class="fa fa-paper-plane"></i>
                                     <span class="nav-link-inner--text">Upload excel</span>
@@ -112,7 +131,9 @@
                                                 <label class="form-control-label" for="input-username">Shortcode</label>
                                             </div>
                                             <div class="col-lg-8">
-                                                <asp:DropDownList ID="ddlShortCode" runat="server" class="form-control form-control-alternative" ForeColor="Black" Font-Bold="true" />
+                                              <%--  <asp:DropDownList ID="ddlShortCode" runat="server" class="form-control form-control-alternative" ForeColor="Black" Font-Bold="true" />--%>
+
+                                                <asp:DropDownList ID="ddlShortCode" runat="server" class="form-control form-control-alternative" ForeColor="Black" Font-Bold="true"></asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
@@ -136,15 +157,15 @@
                                     <div class="form-group mb-3">
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <label class="form-control-label" for="input-username">
+                                                <%--<label class="form-control-label" for="input-username">
                                                     Recipients 
-                                                   <%-- <h6 style="text-align: right">Upload Text File, Each line should have only one MSISDN with country code.</h6>--%>
-                                                </label>
+                                                   <%-- <h6 style="text-align: right">Upload Text File, Each line should have only one MSISDN with country code.</h6>
+                                                </label>--%>
 
                                             </div>
                                             <div class="col-lg-8">
                                                 <div class="row">
-                                                    <asp:FileUpload ID="fileUpload" runat="server" />
+                                                    <%--<asp:FileUpload ID="fileUpload" runat="server" />--%>
                                                     <%--<asp:LinkButton ID="btnUploadDoc" runat="server" class="btn btn-outline-success" OnClick="fileUpload_Load" Height="35px">Upload File</asp:LinkButton>--%>
                                                     <%--<asp:TextBox ID="txtRecipients" runat="server" class="form-control form-control-alternative" TextMode="MultiLine" Height="100px" />
                                                 <h6 style="text-align: right">
@@ -153,6 +174,53 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <label class="form-control-label" for="input-username">
+                                                    Color Batch
+                                                   <%-- <h6 style="text-align: right">Upload Text File, Each line should have only one MSISDN with country code.</h6>--%>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="row">
+                                                    <asp:RadioButtonList ID="rblcolorbatch" runat="server" RepeatColumns="2" RepeatDirection="Horizontal">
+                                                        <asp:ListItem Value="1" Text="Red1" />
+                                                        <asp:ListItem Value="2" Text="Red2" />
+                                                        <asp:ListItem Value="3" Text="Red3" />
+                                                        <asp:ListItem Value="4" Text="Red4" />
+                                                        <asp:ListItem Value="5" Text="Green1" />
+                                                        <asp:ListItem Value="6" Text="Green2" />
+                                                        <asp:ListItem Value="7" Text="Black1" />
+                                                        <asp:ListItem Value="8" Text="Black2" />
+                                                    </asp:RadioButtonList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mb-3">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <label class="form-control-label" for="input-username">
+                                                    Language
+                                                   <%-- <h6 style="text-align: right">Upload Text File, Each line should have only one MSISDN with country code.</h6>--%>
+                                                </label>
+
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="row">
+                                                    <asp:RadioButtonList ID="rbllanguage" runat="server" RepeatDirection="Horizontal"  AutoPostBack="false">
+                                                        <asp:ListItem Value="1" Text="Non-Arabic" />
+                                                        <asp:ListItem Value="2" Text="Arabic" />
+                                                        <asp:ListItem Value="3" Text="Both" />
+                                                    </asp:RadioButtonList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group mb-3">
                                         <div class="row">
                                             <label class="form-control-label" for="input-username">
@@ -166,8 +234,8 @@
                                         </div>
                                     </div>
                                     <div class="text-center">
-                                        <asp:LinkButton ID="lnkBtnSubmit" runat="server" class="btn btn-danger my-4" OnClick="lnkBtnClear_Click">Clear</asp:LinkButton>
-                                        <asp:LinkButton ID="lnkBtnClear" runat="server" class="btn btn-primary my-4" OnClick="lnkBtnSubmit_Click">Send</asp:LinkButton>
+                                        <asp:LinkButton ID="lnkBtnSubmit" runat="server" class="btn btn-danger my-4" OnClick="lnkBtnSubmit_Click">Send</asp:LinkButton>
+                                        <asp:LinkButton ID="lnkBtnClear" runat="server" class="btn btn-primary my-4" OnClick="lnkBtnClear_Click">Clear</asp:LinkButton>
                                     </div>
                                 </form>
                             </div>

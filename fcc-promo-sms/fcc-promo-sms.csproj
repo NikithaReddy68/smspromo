@@ -1756,6 +1756,7 @@
     <Content Include="assets\vendor\prismjs\themes\prism-twilight.css" />
     <Content Include="assets\vendor\prismjs\themes\prism.css" />
     <Content Include="cmpsms.aspx" />
+    <Content Include="delsubscriber.aspx" />
     <Content Include="favicon.png" />
     <Content Include="Index.aspx" />
     <Content Include="mi.ico" />
@@ -1782,6 +1783,13 @@
     </Compile>
     <Compile Include="cmpsms.aspx.designer.cs">
       <DependentUpon>cmpsms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="delsubscriber.aspx.cs">
+      <DependentUpon>delsubscriber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="delsubscriber.aspx.designer.cs">
+      <DependentUpon>delsubscriber.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

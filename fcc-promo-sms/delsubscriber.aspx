@@ -1,26 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="rs.aspx.cs" Inherits="fcc_promo_sms.rs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="delsubscriber.aspx.cs" Inherits="fcc_promo_sms.delsubscriber" %>
 
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="To send SMS ">
-    <meta name="author" content="Mobility International">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="To send SMS "/>
+    <meta name="author" content="Mobility International"/>
     <title>FCC | Promotional SMS</title>
     <!-- Favicon -->
-    <link href="mi.ico" rel="icon" type="image/png">
+    <link href="mi.ico" rel="icon" type="image/png"/>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet"/>
     <!-- Icons -->
-    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="assets/vendor/nucleo/css/nucleo.css" rel="stylesheet"/>
+    <link href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet"/>
     <!-- Argon CSS -->
-    <link type="text/css" href="assets/css/argon_d.css?v=1.0.0" rel="stylesheet">
+    <link type="text/css" href="assets/css/argon_d.css?v=1.0.0" rel="stylesheet"/>
     <link href="Styles/calendar-blue.css" rel="stylesheet" type="text/css" />
 </head>
-
-
 
 
 <body class="bg-default">
@@ -54,7 +52,7 @@
                         </div>
                         <!-- Navbar items -->
                         <ul class="navbar-nav ml-auto">
-                              <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="rs.aspx">
                                     <i class="fa fa-paper-plane"></i>
                                     <span class="nav-link-inner--text">Internal Reports
@@ -66,12 +64,12 @@
                                     <span class="nav-link-inner--text">Compose SMS
                                 </a>
                             </li>
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="delsubscriber.aspx">
                                     <i class="fa fa-paper-plane"></i>
                                     <span class="nav-link-inner--text">Delete Subscribers
                                 </a>
-                                 </li>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-link-icon" href="psms.aspx">
                                     <i class="fa fa-paper-plane"></i>
@@ -89,7 +87,6 @@
                     </div>
                 </div>
             </nav>
-            <!-- Header -->
             <div class="header bg-gradient-primary py-7 py-lg-8">
             </div>
             <!-- Page content -->
@@ -105,45 +102,23 @@
                                 <table>
                                     <tr>
                                         <td style="width: 75px">
-                                            <label class="form-control-label" for="input-username">ReportType</label></td>
+                                            <label class="form-control-label" for="input-username">Recipients</label></td>
                                         <td style="width: 200px; padding-right: 20px">
-                                            <asp:DropDownList ID="ddlRptType" runat="server" class="form-control " ForeColor="Black" Font-Bold="true" Height="40px" >
-                                                <asp:ListItem Text="Internal Summary" Value="1"></asp:ListItem>
-                                                <asp:ListItem Text="SP Revenue Summary" Value="2"></asp:ListItem>
-                                                <asp:ListItem Text="RA Logs" Value="3"></asp:ListItem>
-                                                <asp:ListItem Text="Activation Details" Value="4"></asp:ListItem>
-                                                <asp:ListItem Text="Activation Summary" Value="5"></asp:ListItem>
-                                                <asp:ListItem Text="SFTP Status" Value="6"></asp:ListItem>
-                                                <asp:ListItem Text="SID wise Prepaid and Postpaid revenue" Value="7"></asp:ListItem>
-                                            </asp:DropDownList></td>
-                                        <td style="width: 100px">
-                                            <label class="form-control-label" for="input-username">FromDate</label></td>
-                                        <td style="width: 180px; padding-right: 20px">
-                                            <div class="row">
-                                                <asp:TextBox ID="txtFromDate" runat="server" class="form-control " ReadOnly="true" Width="150px" Height="30px" ForeColor="Black" Font-Bold="true" />
-                                                <%--<img src="assets/img/calender.png" width="30px" />--%>
-                                            </div>
-                                        </td>
-
-                                        <td style="width: 80px">
-                                            <label class="form-control-label" for="input-username">ToDate</label></td>
-                                        <td style="width: 180px">
-                                            <div class="row">
-                                                <asp:TextBox ID="txtToDate" runat="server" class="form-control " ReadOnly="true" Width="150px" Height="30px" ForeColor="Black" Font-Bold="true" />
-                                             
-                                            </div>
-                                        </td>
-                                    
+                                            <asp:FileUpload ID="fileUpload" runat="server"  /></td>
+                                       <%-- <asp:linkbutton id="btnuploaddoc" runat="server" class="btn btn-outline-success"  OnClick="btnuploaddoc_Click" height="35px">upload file</asp:linkbutton>--%>
+                                      <%--  <asp:textbox id="txtrecipients" runat="server" class="form-control form-control-alternative" textmode="multiline" height="100px" />--%>
+                                               <%-- <h6 style="text-align: right">
+                                                    <asp:label id="lblrecieps" runat="server" font-bold="true"></asp:label></h6>--%>
+                                           <td>
+                                               <asp:LinkButton ID="lnkBtnSubmit" runat="server" Height="40px" class="btn btn-default my-4" OnClick="lnkBtnSubmit_Click">Get Data</asp:LinkButton></td>
                                         <td>
-                                            <asp:LinkButton ID="lnkBtnSubmit" runat="server" Height="40px" class="btn btn-default my-4" OnClick="lnkBtnSubmit_Click">Get Data</asp:LinkButton></td>
-                                        <td>
-                                            <asp:LinkButton ID="lnkExport" runat="server" Height="40px" class="btn btn-dribbble    my-4" OnClick="lnkExport_Click" Visible="false">Export</asp:LinkButton></td>
+                                            <asp:LinkButton ID="lnkUnsub" runat="server" Height="40px" class="btn btn-dribbble    my-4" OnClick="lnkUnsub_Click">Unsubscribe</asp:LinkButton></td>
                                     </tr>
 
                                 </table>
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
-                                <%--<form role="form">
+                               <%-- <form role="form">
                                     <div class="form-group mb-3">--%>
                                 <div class="row">
                                     <div style="overflow-x: scroll; overflow-y: scroll; height: 400px;">

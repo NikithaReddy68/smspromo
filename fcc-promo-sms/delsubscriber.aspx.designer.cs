@@ -10,7 +10,7 @@
 namespace fcc_promo_sms {
     
     
-    public partial class cmpsms {
+    public partial class delsubscriber {
         
         /// <summary>
         /// Head1 control.
@@ -49,49 +49,13 @@ namespace fcc_promo_sms {
         protected global::System.Web.UI.WebControls.Label errorMessage;
         
         /// <summary>
-        /// ddlShortCode control.
+        /// fileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShortCode;
-        
-        /// <summary>
-        /// txtPublishTime control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPublishTime;
-        
-        /// <summary>
-        /// rblcolorbatch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblcolorbatch;
-        
-        /// <summary>
-        /// rbllanguage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbllanguage;
-        
-        /// <summary>
-        /// txtMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMessage;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
         
         /// <summary>
         /// lnkBtnSubmit control.
@@ -103,12 +67,21 @@ namespace fcc_promo_sms {
         protected global::System.Web.UI.WebControls.LinkButton lnkBtnSubmit;
         
         /// <summary>
-        /// lnkBtnClear control.
+        /// lnkUnsub control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnClear;
+        protected global::System.Web.UI.WebControls.LinkButton lnkUnsub;
+        
+        /// <summary>
+        /// gvData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvData;
     }
 }
